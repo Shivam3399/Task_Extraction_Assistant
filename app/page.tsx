@@ -89,8 +89,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-6">
-          <div className="w-full">
+        <div className="flex flex-col md:flex-row gap-6">
+          <div className="flex-1">
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6">
               <div className="mb-4">
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
@@ -137,7 +137,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hidden sm:flex sm:justify-center sm:items-center">
+          <div className="md:w-[250px] lg:w-[300px] flex-shrink-0 flex items-center justify-center">
             <AnimeCharacter tasks={tasks} loading={loading} />
           </div>
         </div>
