@@ -3,7 +3,8 @@ import type { Task } from "./types"
 // This is a simplified JavaScript version of our Python task extraction algorithm
 // It will be used as a fallback if the Python backend is not available
 
-const isVercelDeployment = process.env.VERCEL === "1"
+// Always use JavaScript implementation on Vercel
+const isVercelDeployment = true
 
 const ACTION_VERBS = [
   "buy",

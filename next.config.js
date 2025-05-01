@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  // Disable Python API routes for Vercel deployment
+  experimental: {
+    serverComponentsExternalPackages: [],
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -11,4 +17,4 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+module.exports = nextConfig
