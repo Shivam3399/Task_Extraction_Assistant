@@ -3,8 +3,6 @@
 import type { Task } from "@/lib/types"
 import { motion } from "framer-motion"
 import { Calendar, User } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 
 interface TaskCardProps {
   task: Task
@@ -35,12 +33,16 @@ export function TaskCard({ task, index }: TaskCardProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: index * 0.1 }}
     >
-      <Card className="overflow-hidden border-2 hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300 h-full">
-        <CardHeader className="pb-2">
-          <Badge className={`${getCategoryColor(task.category)} mb-2`}>{task.category}</Badge>
-          <CardTitle className="text-lg font-bold capitalize">{task.task}</CardTitle>
-        </CardHeader>
-        <CardContent>
+      <div className="overflow-hidden border-2 hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300 h-full bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+        <div className="pb-2 flex flex-col space-y-1.5 p-6">
+          <div
+            className={`${getCategoryColor(task.category)} mb-2 inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold`}
+          >
+            {task.category}
+          </div>
+          <h3 className="text-lg font-bold capitalize">{task.task}</h3>
+        </div>
+        <div className="p-6 pt-0">
           <div className="space-y-3">
             <div className="flex items-center text-sm">
               <User className="h-4 w-4 mr-2 text-purple-600 dark:text-purple-400" />
@@ -60,8 +62,8 @@ export function TaskCard({ task, index }: TaskCardProps) {
               </div>
             )}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </motion.div>
   )
 }

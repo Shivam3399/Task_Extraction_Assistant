@@ -2,10 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  // Disable Python API routes for Vercel deployment
-  experimental: {
-    serverComponentsExternalPackages: [],
-  },
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -13,6 +9,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
+    domains: ["placeholder.svg"],
     unoptimized: true,
   },
 }
