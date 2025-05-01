@@ -6,6 +6,7 @@ import { TaskCard } from "@/components/task-card"
 import { motion } from "framer-motion"
 import { ThemeToggle } from "@/components/theme-toggle"
 import type { Task } from "@/lib/types"
+import { Textarea } from "@/components/ui/textarea"
 
 export default function Home() {
   const [text, setText] = useState("")
@@ -63,12 +64,12 @@ export default function Home() {
             <label htmlFor="text-input" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Enter your unstructured text:
             </label>
-            <textarea
+            <Textarea
               id="text-input"
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder="Example: John needs to submit the report by Friday. The team should meet to discuss the project at 3 PM tomorrow."
-              className="w-full min-h-[200px] rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 p-3 text-gray-900 dark:text-gray-100"
+              className="min-h-[200px]"
             />
           </div>
           <div className="flex space-x-4">

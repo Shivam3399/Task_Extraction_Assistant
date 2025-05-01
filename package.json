@@ -61,11 +61,7 @@
     "@emotion/is-prop-valid": "latest",
     "child_process": "latest",
     "util": "latest",
-    "framer-motion": "latest",
-    "fs": "latest",
-    "path": "latest",
-    "uuid": "latest",
-    "pdfjs-dist": "latest"
+    "framer-motion": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",
