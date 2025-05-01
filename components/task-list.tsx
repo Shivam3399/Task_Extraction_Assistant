@@ -3,7 +3,6 @@
 import type { Task } from "@/lib/types"
 import { motion } from "framer-motion"
 import { Calendar, User } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
 
 interface TaskListProps {
   tasks: Task[]
@@ -40,7 +39,11 @@ export function TaskList({ tasks }: TaskListProps) {
           <div className="flex flex-col md:flex-row md:items-center gap-3">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1">
-                <Badge className={`${getCategoryColor(task.category)}`}>{task.category}</Badge>
+                <div
+                  className={`${getCategoryColor(task.category)} inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold`}
+                >
+                  {task.category}
+                </div>
                 {task.deadline && (
                   <span className="flex items-center text-xs text-gray-500 dark:text-gray-400">
                     <Calendar className="h-3 w-3 mr-1 inline" />

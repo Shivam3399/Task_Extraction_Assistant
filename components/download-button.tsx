@@ -2,9 +2,7 @@
 
 import { useState } from "react"
 import { FileDown, FileText } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import type { Task } from "@/lib/types"
-import { useToast } from "@/hooks/use-toast"
 
 interface DownloadButtonProps {
   tasks: Task[]
@@ -14,16 +12,11 @@ interface DownloadButtonProps {
 export function DownloadButton({ tasks, disabled = false }: DownloadButtonProps) {
   const [isDownloadingCSV, setIsDownloadingCSV] = useState(false)
   const [isDownloadingText, setIsDownloadingText] = useState(false)
-  const { toast } = useToast()
 
   // Download tasks as CSV
   const downloadCSV = () => {
     if (tasks.length === 0) {
-      toast({
-        title: "No tasks to download",
-        description: "Extract some tasks first before downloading.",
-        variant: "destructive",
-      })
+      alert("Extract some tasks first before downloading.")
       return
     }
 
@@ -62,17 +55,10 @@ export function DownloadButton({ tasks, disabled = false }: DownloadButtonProps)
         URL.revokeObjectURL(url)
       }, 100)
 
-      toast({
-        title: "Download complete",
-        description: "Your tasks have been downloaded as CSV.",
-      })
+      alert("Your tasks have been downloaded as CSV.")
     } catch (error) {
       console.error("Error downloading CSV:", error)
-      toast({
-        title: "Download failed",
-        description: "There was an error downloading your tasks.",
-        variant: "destructive",
-      })
+      alert("There was an error downloading your tasks.")
     } finally {
       setIsDownloadingCSV(false)
     }
@@ -81,11 +67,7 @@ export function DownloadButton({ tasks, disabled = false }: DownloadButtonProps)
   // Download as plain text
   const downloadText = () => {
     if (tasks.length === 0) {
-      toast({
-        title: "No tasks to download",
-        description: "Extract some tasks first before downloading.",
-        variant: "destructive",
-      })
+      alert("Extract some tasks first before downloading.")
       return
     }
 
@@ -123,17 +105,10 @@ export function DownloadButton({ tasks, disabled = false }: DownloadButtonProps)
         URL.revokeObjectURL(url)
       }, 100)
 
-      toast({
-        title: "Download complete",
-        description: "Your tasks have been downloaded as text.",
-      })
+      alert("Your tasks have been downloaded as text.")
     } catch (error) {
       console.error("Error downloading text:", error)
-      toast({
-        title: "Download failed",
-        description: "There was an error downloading your tasks.",
-        variant: "destructive",
-      })
+      alert("There was an error downloading your tasks.")
     } finally {
       setIsDownloadingText(false)
     }
@@ -141,27 +116,23 @@ export function DownloadButton({ tasks, disabled = false }: DownloadButtonProps)
 
   return (
     <div className="flex gap-2">
-      <Button
-        variant="outline"
-        size="sm"
+      <button
+        className="flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
         onClick={downloadCSV}
         disabled={disabled || isDownloadingCSV || tasks.length === 0}
-        className="flex items-center"
       >
         <FileDown className="h-4 w-4 mr-1" />
         {isDownloadingCSV ? "Downloading..." : "CSV"}
-      </Button>
+      </button>
 
-      <Button
-        variant="outline"
-        size="sm"
+      <button
+        className="flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
         onClick={downloadText}
         disabled={disabled || isDownloadingText || tasks.length === 0}
-        className="flex items-center"
       >
         <FileText className="h-4 w-4 mr-1" />
         {isDownloadingText ? "Downloading..." : "Text"}
-      </Button>
+      </button>
     </div>
   )
 }

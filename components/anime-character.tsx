@@ -2,7 +2,6 @@
 
 import type { Task } from "@/lib/types"
 import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
 import { useEffect, useState } from "react"
 
 interface AnimeCharacterProps {
@@ -30,19 +29,6 @@ export function AnimeCharacter({ tasks, loading }: AnimeCharacterProps) {
     }
   }, [loading, tasks])
 
-  const getCharacterImage = () => {
-    switch (characterState) {
-      case "thinking":
-        return "/anime-thinking-boy.png"
-      case "happy":
-        return "/anime-happy-boy.png"
-      case "confused":
-        return "/anime-confused-boy.png"
-      default:
-        return "/anime-idle-boy.png"
-    }
-  }
-
   return (
     <div className="flex flex-col items-center">
       <AnimatePresence mode="wait">
@@ -55,13 +41,17 @@ export function AnimeCharacter({ tasks, loading }: AnimeCharacterProps) {
           className="relative"
         >
           <div className="w-[200px] h-[200px] relative">
-            <Image
-              src={getCharacterImage() || "/placeholder.svg"}
-              alt="Anime assistant character"
-              fill
-              className="object-contain"
-              priority
-            />
+            {/* We'll use a placeholder for the image */}
+            <div
+              className={`w-full h-full rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center`}
+            >
+              <span className="text-4xl">
+                {characterState === "thinking" && "🤔"}
+                {characterState === "happy" && "😊"}
+                {characterState === "confused" && "😕"}
+                {characterState === "idle" && "👋"}
+              </span>
+            </div>
           </div>
         </motion.div>
       </AnimatePresence>
