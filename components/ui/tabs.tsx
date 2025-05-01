@@ -46,7 +46,8 @@ interface TabsListProps {
 export function TabsList({ children, className = "" }: TabsListProps) {
   return (
     <div
-      className={`inline-flex h-10 items-center justify-center rounded-md bg-gray-100 dark:bg-gray-800 p-1 ${className}`}
+      className={`inline-flex h-10 items-center justify-start rounded-md bg-gray-100 dark:bg-gray-800 p-1 overflow-x-auto ${className}`}
+      style={{ WebkitOverflowScrolling: "touch" }}
     >
       {children}
     </div>

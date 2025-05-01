@@ -117,21 +117,25 @@ export function DownloadButton({ tasks, disabled = false }: DownloadButtonProps)
   return (
     <div className="flex gap-2">
       <button
-        className="flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+        className="flex items-center px-2 sm:px-3 py-1.5 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
         onClick={downloadCSV}
         disabled={disabled || isDownloadingCSV || tasks.length === 0}
+        aria-label="Download CSV"
       >
         <FileDown className="h-4 w-4 mr-1" />
-        {isDownloadingCSV ? "Downloading..." : "CSV"}
+        <span className="hidden sm:inline">{isDownloadingCSV ? "Downloading..." : "CSV"}</span>
+        <span className="sm:hidden">CSV</span>
       </button>
 
       <button
-        className="flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+        className="flex items-center px-2 sm:px-3 py-1.5 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
         onClick={downloadText}
         disabled={disabled || isDownloadingText || tasks.length === 0}
+        aria-label="Download Text"
       >
         <FileText className="h-4 w-4 mr-1" />
-        {isDownloadingText ? "Downloading..." : "Text"}
+        <span className="hidden sm:inline">{isDownloadingText ? "Downloading..." : "Text"}</span>
+        <span className="sm:hidden">Text</span>
       </button>
     </div>
   )

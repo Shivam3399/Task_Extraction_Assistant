@@ -34,31 +34,31 @@ export function TaskCard({ task, index }: TaskCardProps) {
       transition={{ duration: 0.3, delay: index * 0.1 }}
     >
       <div className="overflow-hidden border-2 hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300 h-full bg-white dark:bg-gray-800 rounded-lg shadow-sm">
-        <div className="pb-2 flex flex-col space-y-1.5 p-6">
+        <div className="pb-2 flex flex-col space-y-1.5 p-4 sm:p-6">
           <div
             className={`${getCategoryColor(task.category)} mb-2 inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold`}
           >
             {task.category}
           </div>
-          <h3 className="text-lg font-bold capitalize">{task.task}</h3>
+          <h3 className="text-base sm:text-lg font-bold capitalize break-words">{task.task}</h3>
         </div>
-        <div className="p-6 pt-0">
+        <div className="p-4 sm:p-6 pt-0">
           <div className="space-y-3">
-            <div className="flex items-center text-sm">
-              <User className="h-4 w-4 mr-2 text-purple-600 dark:text-purple-400" />
-              <span className="text-gray-700 dark:text-gray-300">{task.who || "Not specified"}</span>
+            <div className="flex items-center text-xs sm:text-sm">
+              <User className="h-3 w-3 sm:h-4 sm:w-4 mr-2 text-purple-600 dark:text-purple-400 flex-shrink-0" />
+              <span className="text-gray-700 dark:text-gray-300 break-words">{task.who || "Not specified"}</span>
             </div>
 
             {task.deadline && (
-              <div className="flex items-center text-sm">
-                <Calendar className="h-4 w-4 mr-2 text-purple-600 dark:text-purple-400" />
-                <span className="text-gray-700 dark:text-gray-300">{task.deadline}</span>
+              <div className="flex items-center text-xs sm:text-sm">
+                <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-2 text-purple-600 dark:text-purple-400 flex-shrink-0" />
+                <span className="text-gray-700 dark:text-gray-300 break-words">{task.deadline}</span>
               </div>
             )}
 
             {task.context && (
               <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
-                <p className="text-xs text-gray-500 dark:text-gray-400 italic">Context: {task.context}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 italic break-words">{task.context}</p>
               </div>
             )}
           </div>

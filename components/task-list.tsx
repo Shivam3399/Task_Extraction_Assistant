@@ -34,33 +34,33 @@ export function TaskList({ tasks }: TaskListProps) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: index * 0.05 }}
-          className="bg-white dark:bg-gray-800 border rounded-lg p-4 hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300"
+          className="bg-white dark:bg-gray-800 border rounded-lg p-3 sm:p-4 hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300"
         >
-          <div className="flex flex-col md:flex-row md:items-center gap-3">
+          <div className="flex flex-col md:flex-row md:items-center gap-2 sm:gap-3">
             <div className="flex-1">
-              <div className="flex items-center gap-2 mb-1">
+              <div className="flex flex-wrap items-center gap-2 mb-1">
                 <div
-                  className={`${getCategoryColor(task.category)} inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold`}
+                  className={`${getCategoryColor(task.category)} inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-semibold`}
                 >
                   {task.category}
                 </div>
                 {task.deadline && (
                   <span className="flex items-center text-xs text-gray-500 dark:text-gray-400">
-                    <Calendar className="h-3 w-3 mr-1 inline" />
-                    {task.deadline}
+                    <Calendar className="h-3 w-3 mr-1 inline flex-shrink-0" />
+                    <span className="break-words">{task.deadline}</span>
                   </span>
                 )}
               </div>
 
-              <h3 className="text-lg font-medium capitalize">{task.task}</h3>
+              <h3 className="text-base sm:text-lg font-medium capitalize break-words">{task.task}</h3>
 
-              <div className="flex items-center text-sm text-gray-600 dark:text-gray-300 mt-1">
-                <User className="h-3.5 w-3.5 mr-1 text-purple-600 dark:text-purple-400" />
-                <span>{task.who || "Not specified"}</span>
+              <div className="flex items-center text-xs sm:text-sm text-gray-600 dark:text-gray-300 mt-1">
+                <User className="h-3 w-3 sm:h-3.5 sm:w-3.5 mr-1 text-purple-600 dark:text-purple-400 flex-shrink-0" />
+                <span className="break-words">{task.who || "Not specified"}</span>
               </div>
 
               {task.context && (
-                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700 pt-2">
+                <p className="mt-2 text-xs sm:text-sm text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700 pt-2 break-words">
                   {task.context}
                 </p>
               )}
